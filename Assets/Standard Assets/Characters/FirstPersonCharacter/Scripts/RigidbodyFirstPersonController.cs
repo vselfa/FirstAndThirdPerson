@@ -8,7 +8,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (CapsuleCollider))]
     public class RigidbodyFirstPersonController : MonoBehaviour
     {
-        [Serializable]
+        public GameObject yellowStone;
+        private void OnCollisionEnter(Collision collision) {
+            if (collision.gameObject.tag == "RedStone") {
+                print("Xoc amb la bola roja!!!");
+                Destroy(collision.gameObject);
+            }
+            if (collision.gameObject.tag == "YellowStone")    {
+	            yellowStone.SendMessage("Follow");
+            }
+        }
+
+
         public class MovementSettings
         {
             public float ForwardSpeed = 8.0f;   // Speed when walking forward
