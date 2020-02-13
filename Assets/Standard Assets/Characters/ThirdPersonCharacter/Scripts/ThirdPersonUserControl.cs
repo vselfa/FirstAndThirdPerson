@@ -13,6 +13,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
 
+        public GameObject blueStone;  
+        public GameObject redStone;
+        public GameObject yellowStone;
+
         
         private void Start()
         {
@@ -31,6 +35,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // get the third person character ( this should never be null due to require component )
             m_Character = GetComponent<ThirdPersonCharacter>();
         }
+
+        private void OnCollisionEnter(Collision collision)         {
+            if (collision.gameObject.tag == "RedStone")     { Destroy(collision.gameObject);}
+            if (collision.gameObject.tag == "BlueStone")    { blueStone.SendMessage("Follow"); }
+            if (collision.gameObject.tag == "YellowStone")  { yellowStone.SendMessage("Impuls");  }
+        }
+
 
 
         private void Update()
