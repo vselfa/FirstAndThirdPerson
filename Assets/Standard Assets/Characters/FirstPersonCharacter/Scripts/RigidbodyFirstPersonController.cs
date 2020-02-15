@@ -14,9 +14,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 print("Xoc amb la bola roja!!!");
                 Destroy(collision.gameObject);
             }
-            if (collision.gameObject.tag == "YellowStone")    {
+            if (collision.gameObject.tag == "BlueStone")    {
 	            yellowStone.SendMessage("Follow");
-            }
+            }     
+            if (collision.gameObject.tag == "YellowStone")    {
+	            yellowStone.SendMessage("Impuls");
+            }     
         }
 
 
